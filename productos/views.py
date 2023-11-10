@@ -6,11 +6,21 @@ from django.db import IntegrityError
 from .forms import * 
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 @login_required
 def contactos(request):
-    contactos = Contactos.objects.all()
+    contactos_list = Contactos.objects.all()
+    items_por_pagina = 5
+    paginator = Paginator(contactos_list, items_por_pagina)
+    page = request.GET.get('page')
+    try:
+        contactos = paginator.page(page)
+    except PageNotAnInteger:
+        contactos = paginator.page(1)
+    except EmptyPage:
+        contactos = paginator.page(paginator.num_pages)
     return render(request, 'contacto/contactos.html', {'contactos': contactos})
 
 @login_required
@@ -98,8 +108,19 @@ def registro(request):
 
 @login_required
 def productos(request):
-    productos = Productos.objects.all()
-    return render(request, 'producto/productos.html', {'productos' : productos})
+    productos_list = Productos.objects.all()
+    items_por_pagina = 5
+    paginator = Paginator(productos_list, items_por_pagina)
+    page = request.GET.get('page')
+    try:
+        productos = paginator.page(page)
+    except PageNotAnInteger:
+        productos = paginator.page(1)
+    except EmptyPage:
+        productos = paginator.page(paginator.num_pages)
+    return render(request, 'producto/productos.html', {
+        'productos': productos,
+    })
 
 def edit_productos(request, p_id):
     if request.method == 'GET':
@@ -144,6 +165,12 @@ def create_productos(request):
                 'form': form,
                 'error': 'Ingresa datos validos'
             })
+        
+def delete_productos(request, p_id):
+    producto = get_object_or_404(Productos, pk=p_id)
+    if request.method == 'POST':
+        producto.delete()
+        return redirect('productos')
 
 @login_required
 def cerrar_sesion(request):
@@ -166,3 +193,9 @@ def crear_sesion(request):
         else:
             login(request, user)
             return redirect('home')
+
+def usuarios(request):
+    usuarios = User.objects.all()
+    return render(request, 'usuario/usuarios.html', {
+        'usuarios': usuarios,
+    })
