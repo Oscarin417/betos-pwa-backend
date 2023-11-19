@@ -3,7 +3,6 @@ from django.db import IntegrityError
 from .forms import * 
 from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-<<<<<<< HEAD
 from rest_framework import viewsets
 from .serializer import ContactosSerializer
 
@@ -12,10 +11,7 @@ class Contacto(viewsets.ModelViewSet):
     serializer_class = ContactosSerializer
     queryset = Contactos.objects.all()
 
-=======
-
 # Create your views here.
->>>>>>> b1eb03d7aa2737231177b545073b6893f970fb3a
 def contacto(request):
     contactos_list = Contactos.objects.all()
     items_por_pagina = 5

@@ -5,9 +5,9 @@
 {% block content %}
     <div class="container">
         {{error}}
-        <form action="/usuarios/create/" method="post">
+        <form action="/usuarios/create/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form.as_p}}
+            {{form}}
             <button class='btn btn-success'>
                 <i class="fas fa-check"></i>
             </button>

@@ -13,7 +13,6 @@
       </li>
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-<<<<<<< HEAD
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
           {% if user.is_authenticated %}
             {{user.username}}
@@ -39,41 +38,6 @@
                 </a>
             {% endif %}
           </div>
-=======
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            {% if user.is_authenticated %}
-              {{user.username}}
-            {% else %}
-              Usuario
-            {% endif %}
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            {% if user.is_authenticated %}
-              <li>
-                <a href="logout">
-                  <i class="fas fa-power-off"></i>
-                  LogOut
-                </a>
-              </li>
-            {% else %}
-                <li>
-                  <a href="login">
-                    <i class="fas fa-sign-in-alt"></i>
-                    LogIn
-                  </a>
-                </li>
-                <li>
-                  <a href="registro">
-                    <i class="fas fa-sign-in-alt"></i>
-                    Registro
-                  </a>
-                </li>
-            {% endif %}
-          </ul>
-        </div>
->>>>>>> b1eb03d7aa2737231177b545073b6893f970fb3a
       </li>
       <!-- Notifications Dropdown Menu -->
     </ul>

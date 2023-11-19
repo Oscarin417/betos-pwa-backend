@@ -1,10 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-<<<<<<< HEAD
 from user.models import User
-=======
-from django.contrib.auth.models import User
->>>>>>> b1eb03d7aa2737231177b545073b6893f970fb3a
 from django.contrib.auth import login, logout, authenticate
 from contactos.models import *
 from productos.models import *
@@ -55,7 +51,7 @@ def registro(request):
                                         password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect("productos")
+                return redirect("home")
             except IntegrityError:
                 return render(request, 'registro.html', {
                     'form': UserCreationForm,

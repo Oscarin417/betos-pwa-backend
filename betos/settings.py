@@ -38,17 +38,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-<<<<<<< HEAD
-    "contactos",
-    "home",
     "user",
+    "rest_framework",
     "productos",
-    "rest_framework"
-=======
-    "productos",
+    "coreapi",
     "contactos",
     "home",
->>>>>>> b1eb03d7aa2737231177b545073b6893f970fb3a
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "betos.urls"
@@ -153,3 +150,12 @@ TEMPLATE_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'user.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    # Puedes añadir más dominios permitidos aquí si es necesario
+]

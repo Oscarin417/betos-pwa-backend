@@ -3,6 +3,7 @@ from django.db import IntegrityError
 from .forms import UserForm 
 from .models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import os
 
 # Create your views here.
 def usuarios(request):
@@ -25,7 +26,7 @@ def create_usuario(request):
         })
     else:
         try:
-            form = UserForm(request.POST)
+            form = UserForm(request.POST, request.FILES)
             form.save()
             return redirect('usuarios')
         except ValueError:
@@ -38,6 +39,8 @@ def delete_usuario(request, u_id):
     usuario = get_object_or_404(User, pk=u_id)
     if request.method == 'POST':
         usuario.delete()
+        if os.path.exists(imagen_path):
+            os.remove(imagen_path)
         return redirect('usuarios')
 
 def edit_usuario(request, u_id): 
@@ -51,12 +54,12 @@ def edit_usuario(request, u_id):
     else:
         try:
             usuario = get_object_or_404(User, pk=u_id)
-            form = UserForm(request.POST, instance=usuario)
+            form = UserForm(request.POST, request.FILES, instance=usuario)
             form.save()
             return redirect('usuarios')
         except ValueError:
             usuario = get_object_or_404(User, pk=u_id)
-            form = UserForm(request.POST, instance=usuario)
+            form = UserForm(request.POST, request.FILES, instance=usuario)
             return render(request, 'edit_usuarios.html', {
                 'usuario': usuario,
                 'form': form,

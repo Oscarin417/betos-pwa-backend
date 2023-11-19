@@ -10,13 +10,14 @@
 	<table class="table table-dark table-striped">
 		<thead>
 			<tr>
-				<td>#</td>
-				<td>Usuario</td>
-				<td>Nombre(s)</td>
-				<td>Apellidos</td>
-				<td>Correo</td>
-				<td>Password</td>
-                <td>Acciones</td>
+				<th>#</th>
+				<th>Usuario</th>
+				<th>Nombre(s)</th>
+				<th>Apellidos</th>
+				<th>Correo</th>
+				<th>Password</th>
+				<th>Imagen</th>
+                <th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,6 +29,9 @@
 					<td>{{u.last_name}}</td>
 					<td>{{u.email}}</td>
                     <td>{{u.password}}</td>
+					<td>
+						<img src="{{u.imagen.url}}" alt="{{u.nombre}}" width="50px;">
+					</td>
 					<td>
 						<div class="btn-group" role="group" aria-label="Basic example">
 							<a href="/usuarios/edit/{{u.id}}" class="btn btn-warning">
