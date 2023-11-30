@@ -1,1 +1,1 @@
-web: python manage.py migrate && guniconr betos-pwa-backend.wsgi
+web: python manage.py migrate && gunicorn betos-pwa-backend.wsgi
