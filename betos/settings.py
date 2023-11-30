@@ -85,11 +85,11 @@ WSGI_APPLICATION = "betos.wsgi.application"
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pwa',
+        'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',  
+        'PASSWORD': '-b-6CFhbHeACBCe-2bDCe6GCg3Ge1gcG',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '49872',  
     }
 }
 
