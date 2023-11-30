@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn betos.wsgi
+web: gunicorn 'betos.wsgi'
