@@ -6,7 +6,6 @@ class Productos(models.Model):
     precio = models.DecimalField(decimal_places=2, max_digits=9, null=False)
     descripcion = models.TextField(null=False)
     imagen = models.ImageField(upload_to='images/', null=False)
-    quanty = models.IntegerField(null=False)
 
     def __str__(self):
         return self.nombre

@@ -13,7 +13,7 @@ class Contacto(viewsets.ModelViewSet):
     queryset = Contactos.objects.all()
 
 # Create your views here.
-@login_required(login_url='/login')
+@login_required
 def contacto(request):
     contactos_list = Contactos.objects.all()
     items_por_pagina = 5

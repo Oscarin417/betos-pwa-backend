@@ -7,7 +7,7 @@ import os
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-@login_required(login_url='/login')
+@login_required
 def usuarios(request):
     usuarios_list = User.objects.all()
     items_por_pagina = 5

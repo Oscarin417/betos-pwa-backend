@@ -13,7 +13,7 @@ class Producto(viewsets.ModelViewSet):
     serializer_class = ProductosSerializer
     queryset = Productos.objects.all()
 
-@login_required(login_url='/login')
+@login_required
 def productos(request):
     productos_list = Productos.objects.all()
     items_por_pagina = 5

@@ -5,8 +5,10 @@ from django.contrib.auth import login, logout, authenticate
 from contactos.models import *
 from productos.models import *
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def home(request):
     contactos = Contactos.objects.all().count()
     productos = Productos.objects.all().count()
